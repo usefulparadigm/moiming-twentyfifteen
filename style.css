@@ -1,0 +1,32 @@
+/*
+Theme Name:     Moiming Twentyfifteen
+Theme URI:      
+Description:    Twentyfifteen child theme.
+Author:         Me
+Author URI:     
+Template:       twentyfifteen
+Version:        0.1.0
+*/
+
+@import url("../twentyfifteen/style.css");
+
+
+.display-posts-listing .listing-item {
+  clear: both;
+  margin-bottom: 1em;
+  border-bottom: 1px solid #ededed;
+  overflow: auto;
+}
+
+.display-posts-listing img {
+  float: left;
+  margin: 0 10px 10px 0;
+}
+
+.display-posts-listing .title {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+/* Styling ACF form */
+#poststuff { min-width: 100% !important; }
