@@ -11,3 +11,8 @@
 //
 // }
 
+// Hide admin bar if user is not admin
+add_filter( 'show_admin_bar' , 'my_function_admin_bar' );
+function my_function_admin_bar(){
+	return current_user_can( 'manage_options' );
+}

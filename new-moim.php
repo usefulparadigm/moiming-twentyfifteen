@@ -7,6 +7,8 @@
  * @uses Advanced Custom Fields
  */
 
+if ( !is_user_logged_in() ) { wp_redirect( wp_login_url() ); exit; }
+
 add_filter('acf/pre_save_post' , 'my_pre_save_post' );
 function my_pre_save_post( $post_id ) {
 	// bail early if not a new post
