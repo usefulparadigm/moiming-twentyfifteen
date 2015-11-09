@@ -23,9 +23,22 @@ get_header(); ?>
         		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
         	</header><!-- .entry-header -->
 
-        	<div class="entry-content">
-        		<?php the_content(); ?>
-        	</div><!-- .entry-content -->
+            <div class="entry-content">
+            	<?php the_content(); ?>
+
+                <h3>모임 날짜: <?php the_field( 'moim_date' ); ?></h3>
+                <h3>모임 장소</h3>
+                <?php
+                $map = get_field( 'moim_location_map' );
+                if( !empty($map) ): ?>
+
+                    <?php echo $map['address']; ?>
+                    <iframe 
+                        width="600" height="350" frameborder="0" style="border:0"
+                        src="https://www.google.com/maps/embed/v1/place?q=<?php echo $map['address']; ?>&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU" allowfullscreen></iframe>
+
+                <?php endif; ?>
+            </div><!-- .entry-content -->
 
         	<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<footer class="entry-footer"><span class="edit-link">', '</span></footer><!-- .entry-footer -->' ); ?>
 

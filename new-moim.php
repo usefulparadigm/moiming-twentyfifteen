@@ -63,12 +63,12 @@ get_header(); ?>
             		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
             	</header>
 
-            	<div class="entry-content">
-                    
+                <div class="entry-content">
+    
                     <?php
                     $options = array(
                         'post_id' => 'new',
-                        'field_groups' => array(47), // CHANGE THIS field group id!!
+                        'field_groups' => array(47, 115), // CHANGE THIS field group id!!
                         'submit_value' => '만들기',
                     );
                     acf_form( $options );

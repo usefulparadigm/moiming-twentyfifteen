@@ -12,3 +12,32 @@ function my_frm_entry_form( $form ) {
   echo '<input type="hidden" name="post_id" value="'.get_the_ID().'">';
 }
 
+// Add custom query vars
+// add_filter( 'query_vars', 'add_my_query_vars_filter' );
+// function add_my_query_vars_filter( $vars ) {
+//     $vars[] = "loc";
+//     return $vars;
+// }
+
+// Hooking pre_get_posts
+add_action( 'pre_get_posts', 'my_pre_get_posts' );
+function my_pre_get_posts( $query ) {
+    
+    // do not modify queries in the admin
+if( is_admin() ) { return $query; }
+    
+    if ( $query->is_main_query() && is_post_type_archive( 'moim' ) ) {
+        
+        if( isset($_GET['loc']) ) {
+            $meta_query[] = array(
+                array(
+                    'key' => 'moim_location_map',
+                    'value' =>  $_GET['loc'], //$query->query_vars['loc'],
+                    'compare' => 'LIKE'
+                )
+            );
+            $query->set( 'meta_query', $meta_query );
+        } 
+    }
+    return $query; 
+}
